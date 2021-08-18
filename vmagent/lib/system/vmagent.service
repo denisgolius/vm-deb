@@ -1,0 +1,23 @@
+[Unit]
+Description=vmagent is a tiny but mighty agent which helps you collect metrics from various sources and store them in VictoriaMetrics or any other Prometheus-compatible storage systems that support the remote_write protocol.
+After=network.target
+
+[Service]
+Type=simple
+User=vmagent
+Group=victoriametrics
+StartLimitBurst=5
+StartLimitInterval=0
+Restart=on-failure
+RestartSec=1
+EnvironmentFile=-/etc/default/vmagent.conf
+ExecStart=/usr/bin/vmagent-prod $ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+# Read more information here https://docs.victoriametrics.com/#tuning
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target

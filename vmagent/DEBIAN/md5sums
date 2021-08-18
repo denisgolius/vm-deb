@@ -1,0 +1,3 @@
+d657f353a4fdf7a9e683109bc629677f  lib/systemd/system/vmagent.service
+45ce1b58770dd23180c184807dc521d7  usr/local/victoriametrics/vmagent/bin/vmagent-prod
+00cf9f1cd99c47acbe053e6ff4bce0f7  usr/share/doc/vmagent/copyright
